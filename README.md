@@ -35,7 +35,7 @@ It will be developed later.
 
 * python 3.8.10
 * tkinter, csv, webbrowser
-* selenium (to download latest selenium chromedriver [download_link](https://sites.google.com/chromium.org/driver/)), bs4
+* **selenium (to download latest selenium chromedriver [download_link](https://sites.google.com/chromium.org/driver/)), bs4** 다운받은 chromedriver.exe 폴더 안에 넣기
 * openpyxl
   
 ## Files
@@ -61,9 +61,9 @@ It will be developed later.
 
 1. 2_data_loader.py를 통해 학교 시간표 law data를 다운 받는다. 
 
-|데이터 수집 장면|
-|--|
-|![nn](/image/data_loader.png)|
+|데이터 수집 장면|데이터 형태|
+|--|--|
+|![nn](/image/data_loader.png)|![nn](/image/data.png)|
 
 
 2. 1_layout.py를 통해 UI를 열어 시간표를 설정하기 위한 여러 조건들을 입력한다.   
@@ -90,7 +90,7 @@ It will be developed later.
 
 개발하면서 크게 어려웠던 점을 순서대로 나열하고 해결방법은 아래에 작성한다.
 
-첫날.
+개발 
 1. gui를 구상해보고 짜봄. 자꾸 2번째 frame에서 표시가 안됐음. 원인을 찾다가
 2. 다음날에 .pack()을 안했다는 사실을 알고 gui 전체 마무리 작업 함
 3. 데이터 정보 다운로드 하기 위해서 bs4사용함. 에타 로그인하는 방법까지 함. (자꾸 로그인 검색 누르기 등 방법을 찾기 어려워 찾음)
