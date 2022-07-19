@@ -33,43 +33,55 @@ It will be developed later.
 ## Environment
 실행에 필요한 package이다.   
 
-* python 3.7.3, cv2 4.1.2
-* numpy, RPi.GPIO, PiCamera
-* twophase.solver (to install `$ pip install RubikTwoPhase`) 
-* Dynamixel_SDK (to install [link](https://emanual.robotis.com/docs/en/software/dynamixel/dynamixel_sdk/download/#repository))
+* python 3.8.10
+* tkinter, csv, webbrowser
+* selenium (to download latest selenium chromedriver [download_link](https://sites.google.com/chromium.org/driver/)), bs4
+* openpyxl
   
 ## Files
 작성한 코드가 각자 어떤 역할을 하는지 설명해준다. 
-1. cube_detect_pi.py
-    * 큐브 인식하기 위한 알고리즘
-	* 이미지 프로세싱 포함
+1. 1_layout.py
+    * UI를 나타내는 코드. 
+	* 학과 선택, 등 시간표를 짜기 위한 여러가지 설정을 정하기 위한 UI이다. 
 	
-2. gpio_control.py
-    * LCD화면, LED 등 외부 회로를 제어하기 위한 코드
-	* 쓰레드를 사용함
+2. 2_data_loader.py
+    * Everytime 홈페이지를 통해 시간표를 다운받는 코드
+	* Selenium과 chromedriver을 통해 시간표 data를 다운한다. 
 	
-3. main.py
+3. 3_main.py
     * 전체적인 코드를 통합한 코드
-	* 각 코드를 연결하기 위한 코드이다. (main)
+	* 각 코드를 연결하기 위한 코드이다. (main) - 미완성
 	
-4. motor_control.py
-    * 모터를 제어하기 위한 코드
-	* 3개의 모터를 제어해 큐브를 돌린다.
-
-추가적으로 motor제어에 안정화를 위해서 "Dynamixel_SDK"의 다음 라이브러리를 수정했다. 
--> 어떤 내용인지 작성하기
+4. 4_timetable.py
+    * 완성된 시간표를 시각적으로 표현하기 위한 코드
+	* Excel을 통해 시각적으로 표현해본다. - 미완성
 
 ## Usage
-작품을 실행하기 위한 방법에 대해 설명한다. 
-1. Environment를 참고해 3d 모델을 뽑아 조립한다.
-2. 그후 Hardware을 연결한다.
-3. Software을 참고해 Raspberry Pi의 환경 세팅한다. 
-4. git clone을 통해 CODE 부분을 Raspberry Pi에 저장한다. 
-5. 명령창을 CODE의 폴더로 이동해 다음과 같이 명령어를 입력한다. 
-```
-$ python3 main.py
-```
-6. 그 후 외부 회로를 만들어 (회로도 참고) 버튼을 클릭해 실행한다. 
-7. 만든 로봇을 통해 큐브를 맞춘다!
+작품을 실행하기 위한 방법에 대해 설명한다.   
+
+1. 2_data_loader.py를 통해 학교 시간표 law data를 다운 받는다. 
+
+|데이터 수집 장면|
+|--|
+|![nn](/image/data_loader.png)|
+
+
+2. 1_layout.py를 통해 UI를 열어 시간표를 설정하기 위한 여러 조건들을 입력한다.   
+
+|(1) 처음화면|(2) 전공선택|(3) 전공선택 완료|(4) main화면|
+|--|--|--|--|
+|![nn](/image/main_img.png)|![nn](/image/subject_select.png)|![nn](/image/subject_select_1.png)|![nn](/image/complete_1.png)|  
+
+|(5) 상세선택화면|(6) 교수, 과목 검색|(7) 과목 선택완료|(8) main화면|
+|--|--|--|--|
+|![nn](/image/pro_lec_select.png)|![nn](/image/pro_lec_select_1.png)|![nn](/image/pro_lec_select_2.png)|![nn](/image/complete_2.png)|   
+
+|(9) 기타 조건 선택|(10) main화면|
+|--|--|
+|![nn](/image/complete_3.png)|![nn](/image/complete_4.png)|
+
+3. 입력된 조건들을 통합해 4_timetable.py로 시각적으로 표현한다.    
+
+이 모든것을 3_main.py로 통합할 예정이다. 
 
 ---------------------------------------------------------
